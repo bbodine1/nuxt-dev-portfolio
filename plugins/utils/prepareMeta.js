@@ -14,7 +14,7 @@
  * special thanks to this dude!
  */
 export default function prepareMeta(
-  {title, description, url, image, keywords},
+  { title, description, url, image, keywords },
   rest
 ) {
   const meta = []
@@ -22,11 +22,11 @@ export default function prepareMeta(
   if (title)
     meta.push(
       {
-        name: "og:title",
+        name: 'og:title',
         content: title,
       },
       {
-        name: "twitter:title",
+        name: 'twitter:title',
         content: title,
       }
     )
@@ -34,64 +34,64 @@ export default function prepareMeta(
   if (description)
     meta.push(
       {
-        name: "description",
+        name: 'description',
         content: description,
       },
       {
-        name: "og:description",
+        name: 'og:description',
         content: description,
       },
       {
-        name: "twitter:description",
+        name: 'twitter:description',
         content: description,
       }
     )
 
   if (url)
     meta.push({
-      name: "og:url",
+      name: 'og:url',
       content: url,
     })
 
   if (image)
     meta.push(
       {
-        name: "og:image",
+        name: 'og:image',
         content: image,
       },
       {
-        name: "twitter:image",
+        name: 'twitter:image',
         content: image,
       }
     )
 
   const defaultKeywords = [
-    "python",
-    "django",
-    "developer",
-    "portfolio",
-    "docker",
-    "graphql",
-    "elasticsearch",
+    'python',
+    'django',
+    'developer',
+    'portfolio',
+    'docker',
+    'graphql',
+    'elasticsearch',
   ]
 
   if (keywords)
     meta.push({
-      name: "keywords",
+      name: 'keywords',
       content: `${
-        typeof keywords === "object" ? keywords.join(",") : keywords
-      }, ${defaultKeywords.join(", ")}`,
+        typeof keywords === 'object' ? keywords.join(',') : keywords
+      }, ${defaultKeywords.join(', ')}`,
     })
   else
     meta.push({
-      name: "keywords",
-      content: defaultKeywords.join(", "),
+      name: 'keywords',
+      content: defaultKeywords.join(', '),
     })
 
-  if (typeof rest === "object")
+  if (typeof rest === 'object')
     rest.forEach((item) => {
-      const {name, content, ...rest} = item
-      meta.push({name, content, ...rest})
+      const { name, content, ...rest } = item
+      meta.push({ name, content, ...rest })
     })
 
   if (meta.length === 0) return []
